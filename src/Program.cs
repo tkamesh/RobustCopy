@@ -1,14 +1,15 @@
-﻿namespace RobustCopy
+namespace RobustCopy
 {
-    using System;
     using System.Threading.Tasks;
+
+    using CliFx;
 
     public class Program
     {
-        public static async Task<int> Main(string[] args)
-        {
-            Console.WriteLine("Hello World");
-            return 0;
-        }
+        public static async Task<int> Main(string[] args) =>
+            await new CliApplicationBuilder()
+            .AddCommandsFromThisAssembly()
+            .Build()
+            .RunAsync();
     }
 }
